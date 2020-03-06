@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (git-gutter ggtags GGTags yasnippet jedi flycheck auto-complete smooth-scrolling ty smooth-scroll counsel swiper ace-window org-bullets solarized-dark solarized-theme which-key try use-package))))
+    (markdown-mode git-gutter ggtags GGTags yasnippet jedi flycheck auto-complete smooth-scrolling ty smooth-scroll counsel swiper ace-window org-bullets solarized-dark solarized-theme which-key try use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -108,6 +108,21 @@
     (global-auto-complete-mode t)
     ))
 
+;;; git-gutter
+(use-package git-gutter
+  :ensure t
+  :init
+  (global-git-gutter-mode +1))
+
+;;; markdown-mode
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 ;; Python. ;;
 (use-package jedi
   :ensure t
@@ -137,9 +152,3 @@
 	    (lambda()
 	      (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
 		(ggtags-mode 1)))))
-
-;;; git-gutter
-(use-package git-gutter
-  :ensure t
-  :init
-  (global-git-gutter-mode +1))
