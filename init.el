@@ -54,7 +54,9 @@
 (defalias 'list-buffers 'ibuffer)
 
 ;; set dark solarized theme.
-(load-theme 'solarized-dark t)
+(use-package solarized-theme
+  :ensure t
+  :config (load-theme 'solarized-dark t))
 
 ;; enable wind-move for fast view switching
 (when (fboundp 'windmove-default-keybindings)
@@ -92,8 +94,10 @@
     ))
 
 ;; smooth-scrolling
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
+(use-package smooth-scrolling
+  :ensure t
+  :config
+  (smooth-scrolling-mode 1))
 
 ;; auto-complete
 (use-package auto-complete
