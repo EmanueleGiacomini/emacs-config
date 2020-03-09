@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode git-gutter ggtags GGTags yasnippet jedi flycheck auto-complete smooth-scrolling ty smooth-scroll counsel swiper ace-window org-bullets solarized-dark solarized-theme which-key try use-package))))
+    (undo-tree elpy anaconda-mode markdown-mode git-gutter ggtags GGTags yasnippet jedi flycheck auto-complete smooth-scrolling ty smooth-scroll counsel swiper ace-window org-bullets solarized-dark solarized-theme which-key try use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -123,12 +123,23 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "markdown"))
 
-;; Python. ;;
+;;; Python ;;;
+
+;;; elpy
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
+
+;;; jedi
 (use-package jedi
   :ensure t
   :init
   (add-hook 'python-mode-hook 'jedi:setup)
   (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+
+
 ;; CPP IDE configuration. ;;
 
 ;; Flycheck
@@ -152,3 +163,9 @@
 	    (lambda()
 	      (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
 		(ggtags-mode 1)))))
+
+;;; undo-tree
+(use-package undo-tree
+  :ensure t
+  :init
+  (undo-tree-mode))
