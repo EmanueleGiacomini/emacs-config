@@ -131,14 +131,11 @@
   :init
   (elpy-enable))
 
-;;; jedi
-(use-package jedi
+;;; anaconda-mode
+(use-package anaconda-mode
   :ensure t
   :init
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (add-hook 'python-mode-hook 'jedi:ac-setup))
-
-
+  (add-hook 'python-mode-hook 'anaconda-mode))
 
 ;; CPP IDE configuration. ;;
 
