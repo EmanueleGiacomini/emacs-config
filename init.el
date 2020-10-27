@@ -166,3 +166,13 @@
   :ensure t
   :init
   (undo-tree-mode))
+
+;;; matlab-mode
+(use-package matlab
+  :ensure matlab-mode
+  :config
+  (add-to-list
+   'auto-mode-alist
+   '("\\.m\\'" . matlab-mode))
+  (setq matlab-indent-function t)
+  (setq matlab-shell-command "matlab"))
